@@ -1,0 +1,13 @@
+<mat-card class="add-task">
+    <mat-card-content class="add-task__content">
+        <div class="add-task__container">
+            <input placeholder="Add new..." name="name" type="text" />
+        </div>
+        <div class="add-task__container">
+            <input name="date" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle class="add-task__date-picker" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <button class="add-task__add-button" mat-raised-button >Add</button>
+        </div>
+    </mat-card-content>
+</mat-card>

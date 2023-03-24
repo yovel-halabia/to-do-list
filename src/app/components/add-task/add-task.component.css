@@ -1,0 +1,32 @@
+.add-task__content{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.add-task__container{
+    display: flex;
+    align-items: center;
+}
+.add-task__container:first-child{
+    flex: 1;
+}
+
+.add-task__container [name="name"]{
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.add-task__container [name="date"]{
+    visibility: hidden;
+}
+
+.add-task__date-picker{
+    color: var(--main-color) ;
+}
+
+.add-task__add-button{
+    background-color: var(--main-color) !important;
+    color:white !important;
+}

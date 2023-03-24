@@ -1,0 +1,20 @@
+<div class="filter">
+    <div class="filter__container">
+        <span>Filter</span>
+        <select>
+            <option *ngFor="let filterType of filterTypes" [value]="filterType">
+                {{filterType}}
+            </option>
+        </select>
+        <mat-icon fontIcon="filter_list"></mat-icon>
+    </div>
+    <div class="filter__container">
+        <span>Sort</span>
+        <select>
+            <option *ngFor="let sortType of sortTypes" [value]="sortType">
+                {{sortType}}
+            </option>
+        </select>
+        <mat-icon fontIcon="sort"></mat-icon>
+    </div>
+</div>

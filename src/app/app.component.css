@@ -1,0 +1,19 @@
+.app__card{
+    max-width: 800px;
+    margin: auto;
+    background-color: var(--gray-color);
+}
+
+.app__card h1{
+    color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:5px;
+}
+
+.app__card mat-icon{
+    font-size: 35px;
+    width: 35px;
+    height: 35px;
+}

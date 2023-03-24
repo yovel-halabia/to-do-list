@@ -1,0 +1,58 @@
+.task{
+    display: flex;
+    justify-content: space-between;
+}
+
+.task__container{
+    display: flex;
+    
+}
+.task__container:first-child{
+    align-items: center;
+}
+
+.task__container:first-child input{
+    border: none;
+    outline: none;
+    background: none;
+}
+
+
+
+.task__container:first-child input:focus{
+    background: white;
+}
+
+.task__due-date{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background: white;
+    border: 1px solid #ffc107;
+    padding: 0 10px;
+    gap:5px;
+    margin-right: 20px;
+}
+
+.task__due-date mat-icon{
+    color: #ffc107;
+}
+
+.task__delete-button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.task__delete-button mat-icon{
+    color:#dc3545;
+}
+
+
+.task__info{
+    display: flex;
+    color:rgba(0,0,0,.5);
+}
+
+.task__info mat-icon{
+    font-size: 18px;
+}

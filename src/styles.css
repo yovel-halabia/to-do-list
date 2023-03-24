@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button{
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+input:-webkit-autofill { 
+    background-clip:text;
+    -webkit-background-clip: text;
+}
+
+:root{
+    --main-color: #007bff;
+    --gray-color: #f8f9fa;
+    
+}
+
+.mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background{
+  border-color: #007bff !important;
+  background-color: #007bff !important;
+}
+
+.mdc-checkbox__ripple {
+  background-color: #007bff !important;
+}
+
+.mat-mdc-checkbox .mat-ripple-element{
+  background-color: rgba(0, 123, 255,0.1) !important;
+}
