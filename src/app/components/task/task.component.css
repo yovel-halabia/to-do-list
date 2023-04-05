@@ -34,6 +34,19 @@
     margin-right: 20px;
 }
 
+.task mat-calendar{
+    position: absolute;
+    background: white;
+    width: 300px;
+}
+
+.task input[name=dueDate]{
+    visibility: hidden;
+    position: relative;
+    top:-5px;
+    height: 0;
+}
+
 .task__due-date mat-icon{
     color: #ffc107;
 }

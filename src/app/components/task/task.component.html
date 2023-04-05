@@ -1,19 +1,21 @@
 <div class="task">
     <div class="task__container">
-        <mat-checkbox ></mat-checkbox>
-        <input type="text">
+        <mat-checkbox [checked]="task.complete" (change)="onCheckBoxChange($event)"></mat-checkbox>
+        <input (focusout)="onCheckBoxChange($event)" [(ngModel)]="task.title" type="text">
     </div>
 
     <div class="task__container">
-        <div>
-            <div class="task__due-date">
+        <div *ngIf="task.dueDate !== ''">
+            <div class="task__due-date" (click)="picker.open()">
                 <mat-icon fontIcon="access_alarm"></mat-icon>
-                <span>28th Jun 2020</span>
+                <span>{{task.dueDate}}</span>
             </div>
+            <input name="dueDate" (dateChange)="onDateChange($event)" [matDatepicker]="picker">
+            <mat-datepicker [startAt]="dueDateAsDate" #picker></mat-datepicker>
         </div>
         <div >
             <div class="task__delete-button">
-                <button >
+                <button (click)="removeTask()">
                     <mat-icon fontIcon="delete_icon"></mat-icon>
                 </button>
                 
@@ -21,7 +23,7 @@
             </div>
             <div class="task__info">
                 <mat-icon fontIcon="info_icon"></mat-icon>
-                <span>28th Jun 2020</span>
+                <span>{{task.addedDate}}</span>
             </div>
         </div>
 

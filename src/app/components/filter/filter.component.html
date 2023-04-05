@@ -1,7 +1,7 @@
 <div class="filter">
     <div class="filter__container">
         <span>Filter</span>
-        <select>
+        <select (change)="onFilterChange($event)">
             <option *ngFor="let filterType of filterTypes" [value]="filterType">
                 {{filterType}}
             </option>
@@ -10,7 +10,7 @@
     </div>
     <div class="filter__container">
         <span>Sort</span>
-        <select>
+        <select (change)="onSortChange($event)">
             <option *ngFor="let sortType of sortTypes" [value]="sortType">
                 {{sortType}}
             </option>

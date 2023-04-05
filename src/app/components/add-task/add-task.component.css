@@ -1,4 +1,4 @@
-.add-task__content{
+.add-task__form{
     display: flex;
     justify-content: space-between;
     padding: 10px;
@@ -12,13 +12,13 @@
     flex: 1;
 }
 
-.add-task__container [name="name"]{
+.add-task__container [name="title"]{
     width: 100%;
     border: none;
     outline: none;
 }
 
-.add-task__container [name="date"]{
+.add-task__container [name="dueDate"]{
     visibility: hidden;
 }
 

@@ -16,6 +16,7 @@ import {TasksComponent} from "./components/tasks/tasks.component";
 import {TaskComponent} from "./components/task/task.component";
 import {FilterComponent} from "./components/filter/filter.component";
 import {MatSelectModule} from "@angular/material/select";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {MatSelectModule} from "@angular/material/select";
 		MatDividerModule,
 		MatCheckboxModule,
 		MatSelectModule,
+		FormsModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

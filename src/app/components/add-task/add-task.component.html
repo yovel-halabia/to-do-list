@@ -1,13 +1,15 @@
 <mat-card class="add-task">
-    <mat-card-content class="add-task__content">
+    <mat-card-content>
+        <form (ngSubmit)="addTask()" class="add-task__form">
         <div class="add-task__container">
-            <input placeholder="Add new..." name="name" type="text" />
+            <input [(ngModel)]="title" placeholder="Add new..." name="title" type="text" />
         </div>
         <div class="add-task__container">
-            <input name="date" matInput [matDatepicker]="picker">
+            <input [(ngModel)]="dueDate" name="dueDate" matInput [matDatepicker]="picker">
             <mat-datepicker-toggle class="add-task__date-picker" matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-            <button class="add-task__add-button" mat-raised-button >Add</button>
+            <button type="submit" class="add-task__add-button" mat-raised-button>Add</button>
         </div>
+    </form>
     </mat-card-content>
 </mat-card>
