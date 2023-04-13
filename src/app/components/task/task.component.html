@@ -1,7 +1,7 @@
 <div class="task">
     <div class="task__container">
-        <mat-checkbox [checked]="task.complete" (change)="onCheckBoxChange($event)"></mat-checkbox>
-        <input (focusout)="onCheckBoxChange($event)" [(ngModel)]="task.title" type="text">
+        <mat-checkbox [checked]="task.complete" (change)="onChange($event)"></mat-checkbox>
+        <input (focusout)="onChange($event)" [(ngModel)]="task.title" type="text">
     </div>
 
     <div class="task__container">
@@ -10,7 +10,7 @@
                 <mat-icon fontIcon="access_alarm"></mat-icon>
                 <span>{{task.dueDate}}</span>
             </div>
-            <input name="dueDate" (dateChange)="onDateChange($event)" [matDatepicker]="picker">
+            <input name="dueDate" (dateChange)="onDateChange($event)" [min]="minDate" [matDatepicker]="picker">
             <mat-datepicker [startAt]="dueDateAsDate" #picker></mat-datepicker>
         </div>
         <div >
@@ -30,3 +30,4 @@
     </div>
 
 </div>
+<app-alert *ngIf="showAlert" [text]="'You cant leave task discription empty'"></app-alert>

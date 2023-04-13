@@ -9,12 +9,26 @@ import {TaskService} from "src/app/services/task.service";
 	styleUrls: ["./add-task.component.css"],
 })
 export class AddTaskComponent {
+	minDate: Date = new Date();
 	title: string = "";
 	dueDate: string = "";
+	showAlert: boolean = false;
+	alertTimeout: ReturnType<typeof setTimeout> | undefined;
 
 	constructor(private taskService: TaskService) {}
 
 	addTask() {
+		this.showAlert = false;
+		if (!this.title) {
+			this.showAlert = true;
+			if (!this.alertTimeout) {
+				this.alertTimeout = setTimeout(() => {
+					if (this.showAlert) this.showAlert = false;
+					this.alertTimeout = undefined;
+				}, 2000);
+			}
+			return;
+		}
 		var task: Task = {
 			id: new Date().getTime(),
 			complete: false,

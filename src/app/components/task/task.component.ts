@@ -10,12 +10,17 @@ import Task from "src/assets/interfaces/task";
 })
 export class TaskComponent implements OnInit {
 	@Input() public task: Task;
+	prevTitle: string;
+	minDate: Date = new Date();
 	dueDateAsDate: Date;
+	showAlert: boolean = false;
+	alertTimeout: ReturnType<typeof setTimeout> | undefined;
 
 	constructor(private taskService: TaskService) {}
 
 	ngOnInit(): void {
 		this.dueDateAsDate = stringToDate(this.task.dueDate);
+		this.prevTitle = this.taskService.tasks.filter((pTask) => pTask.id === this.task.id)[0].title;
 	}
 
 	removeTask(): void {
@@ -32,8 +37,23 @@ export class TaskComponent implements OnInit {
 		this.changeTask();
 	}
 
-	onCheckBoxChange(e: any): void {
-		this.task.complete = e.checked;
+	onChange(e: any): void {
+		if (e.checked) this.task.complete = e.checked;
+		if (e.target.value === "") {
+			this.showAlert = true;
+			e.target.value = this.prevTitle;
+			if (!this.alertTimeout) {
+				this.alertTimeout = setTimeout(() => {
+					if (this.showAlert) this.showAlert = false;
+					this.alertTimeout = undefined;
+				}, 2000);
+			}
+			return;
+		} else if (e.target.value) {
+			this.task.title = e.target.value;
+			this.prevTitle = e.target.value;
+		}
+
 		this.changeTask();
 	}
 }

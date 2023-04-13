@@ -17,10 +17,11 @@ import {TaskComponent} from "./components/task/task.component";
 import {FilterComponent} from "./components/filter/filter.component";
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule} from "@angular/forms";
+import { AlertComponent } from './components/alert/alert.component';
 
 
 @NgModule({
-	declarations: [AppComponent, AddTaskComponent, TasksComponent, TaskComponent, FilterComponent],
+	declarations: [AppComponent, AddTaskComponent, TasksComponent, TaskComponent, FilterComponent, AlertComponent],
 	imports: [
 		BrowserModule,
 		MatCardModule,

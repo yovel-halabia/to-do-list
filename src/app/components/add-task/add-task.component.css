@@ -1,7 +1,11 @@
+.add-task mat-card-content{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .add-task__form{
     display: flex;
     justify-content: space-between;
-    padding: 10px;
 }
 
 .add-task__container{
