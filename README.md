@@ -1,6 +1,6 @@
 # ToDoList
 
-> Live demo [_here_](https://noto-website.herokuapp.com/).
+> Live demo [_here_](https://to-do-list-mu-bay.vercel.app/).
 
 ## Table of Contents
 * [General Info](#general-information)
