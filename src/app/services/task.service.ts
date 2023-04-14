@@ -9,6 +9,8 @@ import {stringToDate} from "src/assets/utils";
 export class TaskService {
 	public tasks: Task[] = window.localStorage.getItem("tasks") ? JSON.parse(window.localStorage.getItem("tasks") || "") : [];
 	private subject = new Subject();
+	private filterOption: string = "All";
+	private sortOption: string = "Add due";
 
 	constructor() {
 		this.tasks = this.tasks.sort((a, b) => {
@@ -24,20 +26,15 @@ export class TaskService {
 
 	addTask(task: Task): void {
 		this.tasks.push(task);
-		this.subject.next(this.tasks);
 		window.localStorage.setItem("tasks", JSON.stringify(this.tasks));
+		this.filter(this.filterOption, this.tasks);
 	}
 
 	changeTask(task: Task): void {
 		this.tasks = window.localStorage.getItem("tasks") ? JSON.parse(window.localStorage.getItem("tasks") || "") : [];
 		this.tasks = this.tasks.map((prevTask: Task) => (prevTask.id === task.id ? task : prevTask));
 		window.localStorage.setItem("tasks", JSON.stringify(this.tasks));
-		this.tasks = this.tasks.sort((a, b) => {
-			if (a.complete && !b.complete) return 1;
-			if (!a.complete && b.complete) return -1;
-			return 0;
-		});
-		this.subject.next(this.tasks);
+		this.filter(this.filterOption, this.tasks);
 	}
 
 	removeTask(id: number): void {
@@ -46,31 +43,42 @@ export class TaskService {
 		window.localStorage.setItem("tasks", JSON.stringify(this.tasks));
 	}
 
-	filter(option: string): void {
-		this.tasks = window.localStorage.getItem("tasks") ? JSON.parse(window.localStorage.getItem("tasks") || "") : [];
+	filter(option: string, tasks: Task[] = this.getTaskFromLocalStorage()): void {
+		this.filterOption = option;
 		switch (option) {
 			case "Completed":
-				this.tasks = this.tasks.filter((task: Task) => task.complete === true);
+				tasks = tasks.filter((task: Task) => task.complete === true);
 				break;
 			case "Active":
-				this.tasks = this.tasks.filter((task: Task) => task.complete === false);
+				tasks = tasks.filter((task: Task) => task.complete === false);
 				break;
 			case "Has due date":
-				this.tasks = this.tasks.filter((task: Task) => task.dueDate !== "");
+				tasks = this.tasks.filter((task: Task) => task.dueDate !== "");
 				break;
 		}
-		this.subject.next(this.tasks);
+		this.tasks = tasks;
+		this.sort(this.sortOption, this.tasks);
 	}
 
-	sort(option: string): void {
-		this.tasks = window.localStorage.getItem("tasks") ? JSON.parse(window.localStorage.getItem("tasks") || "") : [];
+	sort(option: string, tasks: Task[] = this.getTaskFromLocalStorage()): void {
+		this.sortOption = option;
 		if (option === "Due date")
-			this.tasks = this.tasks.sort((a: Task, b: Task) => {
+			tasks = tasks.sort((a: Task, b: Task) => {
 				if (a.dueDate && b.dueDate) return new Date(stringToDate(a.dueDate)).getTime() - new Date(stringToDate(b.dueDate)).getTime();
 				if (a.dueDate && !b.dueDate) return -1;
 				if (!a.dueDate && b.dueDate) return 1;
 				return 0;
 			});
+		this.tasks = this.tasks.sort((a, b) => {
+			if (a.complete && !b.complete) return 1;
+			if (!a.complete && b.complete) return -1;
+			return 0;
+		});
+		this.tasks = tasks;
 		this.subject.next(this.tasks);
+	}
+
+	private getTaskFromLocalStorage(): Task[] {
+		return window.localStorage.getItem("tasks") ? JSON.parse(window.localStorage.getItem("tasks") || "") : [];
 	}
 }

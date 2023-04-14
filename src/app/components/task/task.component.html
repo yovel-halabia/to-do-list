@@ -1,12 +1,12 @@
-<div class="task">
+<div class="task" [ngClass]="{'task-done':task.complete}">
     <div class="task__container">
         <mat-checkbox [checked]="task.complete" (change)="onChange($event)"></mat-checkbox>
-        <input (focusout)="onChange($event)" [(ngModel)]="task.title" type="text">
+        <input [disabled]="task.complete" (focusout)="onChange($event)" [(ngModel)]="task.title" type="text">
     </div>
 
     <div class="task__container">
-        <div *ngIf="task.dueDate !== ''">
-            <div class="task__due-date" (click)="picker.open()">
+        <div *ngIf="task.dueDate !== '' && !task.complete">
+            <div [ngClass]="{'task__due-date-due': isDateDue}" class="task__due-date" (click)="picker.open()">
                 <mat-icon fontIcon="access_alarm"></mat-icon>
                 <span>{{task.dueDate}}</span>
             </div>

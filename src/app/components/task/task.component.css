@@ -1,6 +1,8 @@
 .task{
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .task__container{
@@ -8,13 +10,24 @@
     
 }
 .task__container:first-child{
+    flex: 0.9;
     align-items: center;
+}
+.task__container:last-child  > div:last-child{
+    visibility: hidden;
+}
+
+.task:hover .task__container:last-child > div:last-child{
+    visibility:visible;
 }
 
 .task__container:first-child input{
+    width: 100%;
+    font-size: 1rem;
     border: none;
     outline: none;
     background: none;
+    padding: 5px;
 }
 
 
@@ -23,9 +36,15 @@
     background: white;
 }
 
+
+.task-done .task__container:first-child input{
+    text-decoration: line-through;
+}
+
 .task__due-date{
     display: flex;
     align-items: center;
+    width: fit-content;
     height: 100%;
     background: white;
     border: 1px solid #ffc107;
@@ -34,21 +53,31 @@
     margin-right: 20px;
 }
 
-.task mat-calendar{
-    position: absolute;
-    background: white;
-    width: 300px;
-}
 
 .task input[name=dueDate]{
     visibility: hidden;
     position: relative;
     top:-5px;
     height: 0;
+    width: 0;
 }
 
 .task__due-date mat-icon{
     color: #ffc107;
+}
+
+.task__due-date-due{
+    border-color: #dc3545;
+}
+
+.task__due-date-due mat-icon{
+    color: #dc3545;
+}
+
+.task__due-date span{
+    font-size: 0.75rem;
+    width: 70px;
+    text-align: center;
 }
 
 .task__delete-button{
@@ -62,10 +91,38 @@
 
 
 .task__info{
+    width: 100px;
+    font-size: 0.75rem;
     display: flex;
     color:rgba(0,0,0,.5);
+    gap: 5px;
+    justify-content: flex-end;
 }
 
 .task__info mat-icon{
-    font-size: 18px;
+    font-size: 0.75rem;
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+
+@media screen and (max-width: 468px) {
+    .task{
+        flex-direction: column;
+    }
+
+    .task__container:last-child{
+        align-self: flex-end;
+    }
+    .task__container:last-child > div:last-child{
+        visibility:visible;
+    }
+
+    .task__info{
+        width:70px;
+    }
+
+    .task__due-date span{
+        width: 50px;
+    }
 }

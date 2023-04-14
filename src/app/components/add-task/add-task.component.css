@@ -17,20 +17,26 @@
 }
 
 .add-task__container [name="title"]{
+    font-size: 1rem;
     width: 100%;
     border: none;
     outline: none;
 }
 
 .add-task__container [name="dueDate"]{
-    visibility: hidden;
+    padding: 0;
+    width: 0;
+    border: 0;
+    margin-top: 35px;
 }
 
 .add-task__date-picker{
+    font-size: 0.75rem;
     color: var(--main-color) ;
 }
 
 .add-task__add-button{
+    font-size: 0.75rem;
     background-color: var(--main-color) !important;
     color:white !important;
 }

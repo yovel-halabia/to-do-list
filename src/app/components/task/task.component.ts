@@ -13,6 +13,7 @@ export class TaskComponent implements OnInit {
 	prevTitle: string;
 	minDate: Date = new Date();
 	dueDateAsDate: Date;
+	isDateDue: boolean = false;
 	showAlert: boolean = false;
 	alertTimeout: ReturnType<typeof setTimeout> | undefined;
 
@@ -21,6 +22,7 @@ export class TaskComponent implements OnInit {
 	ngOnInit(): void {
 		this.dueDateAsDate = stringToDate(this.task.dueDate);
 		this.prevTitle = this.taskService.tasks.filter((pTask) => pTask.id === this.task.id)[0].title;
+		this.isDateDue = this.dueDateAsDate.getTime() < new Date().getTime() && this.task.dueDate !== dateToString(new Date());
 	}
 
 	removeTask(): void {
@@ -34,12 +36,13 @@ export class TaskComponent implements OnInit {
 	onDateChange(e: any): void {
 		this.dueDateAsDate = e.target.value;
 		this.task.dueDate = dateToString(e.target.value);
+		this.isDateDue = this.dueDateAsDate.getTime() < new Date().getTime() && this.task.dueDate !== dateToString(new Date());
 		this.changeTask();
 	}
 
 	onChange(e: any): void {
-		if (e.checked) this.task.complete = e.checked;
-		if (e.target.value === "") {
+		if (e.checked || e.checked === false) this.task.complete = e.checked;
+		if (e.target?.value === "") {
 			this.showAlert = true;
 			e.target.value = this.prevTitle;
 			if (!this.alertTimeout) {
@@ -49,7 +52,7 @@ export class TaskComponent implements OnInit {
 				}, 2000);
 			}
 			return;
-		} else if (e.target.value) {
+		} else if (e.target?.value) {
 			this.task.title = e.target.value;
 			this.prevTitle = e.target.value;
 		}
