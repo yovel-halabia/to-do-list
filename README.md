@@ -1,27 +1,53 @@
 # ToDoList
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+> Live demo [_here_](https://noto-website.herokuapp.com/).
 
-## Development server
+## Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Setup](#setup)
+* [Project Status](#project-status)
+* [Room for Improvement](#room-for-improvement)
+* [Contact](#contact)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## General Information
+- This is my first project in angular framework
+- In this project you will create and track your day to day task with several options to filtering and sorting your tasks to get full productivity
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Technologies Used
+![Skills](https://skills.thijs.gg/icons?i=nodejs,angular&perline=5)
+- NodeJS - version 18.12.1
+- Angular - version 15.2.0
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
+## Features
+List the ready features here:
+- Create new task to do & define due date
+- Edit your existing task
+- Filter and sort tasks with several options
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Setup
+To setup local environment:<br/>
+require: nodeJS version >= 18.12.1<br/>
+Clone the repository to your local machine<br/>
+Open the project in the IDE and run the following command in terminal:<br/>
+`npm install`</br>
+`npm start`<br/>
+
+
+## Project Status
+Project is: _complete_
+
+
+## Contact
+Created by [@yovel_halabia](https://www.linkedin.com/in/yovel-halabia-450a2b1b2/) - feel free to contact me!
+
+
