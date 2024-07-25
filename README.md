@@ -5,7 +5,7 @@ Live demo [_here_](https://to-do-list-mu-bay.vercel.app/).
 In this project you will create and track your day to day task with several options to filtering and sorting your tasks to get full productivity.
 
 ## Technologies Used
-![Skills](https://skills.thijs.gg/icons?i=nodejs,angular&perline=5)
+![Skills](https://skillicons.dev/icons?i=ts,html,css,angular)
 
 ## Features
 - Create new task to do & define due date
